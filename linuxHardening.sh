@@ -37,7 +37,7 @@ allFunctions()
     clear
 
     manualEdit
-    updateSystem
+    updateSystem >> $PWD/Logs/Updates.log
     networkProtection
     rootpasswd
     rootkitInstall
@@ -46,11 +46,11 @@ allFunctions()
     repoCheck
     cronProtection
     zeroUidProtection
-    systemctlProtection
-    FileFinderDeleter
+    systemctlProtection  >> $PWD/Logs/SysCtl.log
+    FileFinderDeleter  >> $PWD/Logs/FileFinderDeleter.log
     fileSecurityProtection
-    hackerToolDeleter
-    passwordAuditSecurity
+    hackerToolDeleter >> $PWD/Logs/haktool.log
+    passwordAuditSecurity  >> $PWD/Logs/passAudit.log
 }
 
 
@@ -68,9 +68,9 @@ cont()
 
 manualEdit()
 {
-    cat /etc/group | grep sudo
+    cat /etc/group | grep sudo >> $PWD/Logs/Admins.log
     pause
-    cat /etc/apt/sources.list
+    cat /etc/apt/sources.list >> $PWD/Logs/sources.log
     pause
     cont
 }
@@ -81,7 +81,7 @@ networkProtection()
     printf "\033[1;31mSome manual network inspection...\033[0m\n"
 	#--------- Manual Network Inspection ----------------
 	lsof -i -n -P
-	netstat -tulpn
+	netstat -tulpn >> $PWD/Logs/Ports.log
 	cont
 }
 
@@ -146,32 +146,32 @@ rootkitInstall()
     clear
     # Use those rootkits, anti-malware, etc...
     echo -e "Starting CHKROOTKIT scan"
-    sudo chkrootkit -q
+    sudo chkrootkit -q >> $PWD/Logs/Rootkits.log
     cont
     echo -e "Starting FRESHCLAM scan"
-    sudo freshclam
+    sudo freshclam >> $PWD/Logs/Rootkits.log
     cont
     echo -e "Starting Clamscan scan"
-    sudo clamscan -r --bell -i /home/
+    sudo clamscan -r --bell -i /home/ >> $PWD/Logs/Rootkits.log
     cont
     echo -e "Starting RKHUNTER scan"
-    sudo rkhunter --update
-    rkhunter --propupd
-    rkhunter -c --enable all --disable none
+    sudo rkhunter --update >> $PWD/Logs/Rootkits.log
+    rkhunter --propupd >> $PWD/Logs/Rootkits.log
+    rkhunter -c --enable all --disable none >> $PWD/Logs/Rootkits.log
     cont
     echo -e "Starting CLAMAV scan"
-    systemctl stop clamav-freshclam
-	freshclam --stdout
-	systemctl start clamav-freshclam
-	clamscan -r -i --stdout --exclude-dir="^/sys" /
+    systemctl stop clamav-freshclam >> $PWD/Logs/Rootkits.log
+	freshclam --stdout >> $PWD/Logs/Rootkits.log
+	systemctl start clamav-freshclam >> $PWD/Logs/Rootkits.log
+	clamscan -r -i --stdout --exclude-dir="^/sys" / >> $PWD/Logs/Rootkits.log
 	cont
     # Run Lynis AV for audit config
-    echo -e "Running Lynis Scan"
-    wget https://downloads.cisofy.com/lynis/lynis-2.6.9.tar.gz -O lynis.tar.gz
-    sudo tar -xzf ./lynis.tar.gz --directory /usr/share/
-    cd /usr/share/lynis
-    /usr/share/lynis/lynis update info
-    /usr/share/lynis/lynis audit system
+    echo -e "Running Lynis Scan" >> $PWD/Logs/Rootkits.log
+    wget https://downloads.cisofy.com/lynis/lynis-2.6.9.tar.gz -O lynis.tar.gz >> $PWD/Logs/Rootkits.log
+    sudo tar -xzf ./lynis.tar.gz --directory /usr/share/ >> $PWD/Logs/Rootkits.log
+    cd /usr/share/lynis >> $PWD/Logs/Rootkits.log
+    /usr/share/lynis/lynis update info >> $PWD/Logs/Rootkits.log
+    /usr/share/lynis/lynis audit system >> $PWD/Logs/Rootkits.log
 
     cont
 }
@@ -194,7 +194,7 @@ firewallNOW()
     ufw deny 515
     ufw deny 111
     ufw deny 7100
-    ufw status
+    ufw status >> $PWD/Logs/Firewall.log
     pause
     clear
     cont
