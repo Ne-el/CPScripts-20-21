@@ -42,4 +42,12 @@ sudo ./linuxHardening.sh
 ## Windows
 This might be the easiest way to get your points in the fastest way possible.
 
-Just go to github.com/Ne-el/CPScripts-20-21 and click ![DownloadCode] https://github.com/Ne-el/CPScripts-20-21/blob/master/Readme%20Reference/DOWNLOADCODE.png
+Just go to github.com/Ne-el/CPScripts-20-21 and click the green download code button.
+
+After it finishes installing, right-click on it and click "Extract All" to extract the files to be used
+
+**DO NOT USE SCRIPTS WITHOUT EXTRACTING BECAUSE IT WILL NOT BE ABLE TO ACCESS RESOURCES**
+
+Right click on windowsHardening.bat and click "Run as Administrator"
+
+Let it do its work.
