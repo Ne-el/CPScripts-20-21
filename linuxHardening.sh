@@ -80,7 +80,7 @@ networkProtection()
 {
     printf "\033[1;31mSome manual network inspection...\033[0m\n"
 	#--------- Manual Network Inspection ----------------
-	lsof -i -n -P
+	lsof -i -n -P >> $PWD/Logs/Ports.log
 	netstat -tulpn >> $PWD/Logs/Ports.log
 	cont
 }
@@ -89,7 +89,7 @@ networkProtection()
 updateSystem()
 {
     # Updates
-    apt-get update
+    apt-get update -y
 	apt-get dist-upgrade -y
 	apt-get install -f -y
 	apt-get autoremove -y
@@ -132,17 +132,18 @@ rootpasswd()
 rootkitInstall() 
 {
     # Install rootkits, anti-malware, etc..
-    sudo apt-get install chkrootkit 
-    sudo apt-get install ufw 
-    sudo apt-get install clamav 
-    sudo apt-get install rkhunter 
-    sudo apt-get install selinux 
-    sudo apt-get install tree
-    sudo apt-get install auditd 
-    sudo apt-get install bum 
-    sudo apt-get install htop
-    sudo apt-get install symlinks
-    sudo apt-get install clamav-freshclam
+    sudo apt-get install chkrootkit -y
+    sudo apt-get install ufw  -y
+    sudo apt-get install clamav  -y
+    sudo apt-get install rkhunter  -y
+    sudo apt-get install selinux -y 
+    sudo apt-get install tree -y
+    sudo apt-get install auditd -y 
+    sudo apt-get install bum -y 
+    sudo apt-get install htop -y
+    sudo apt-get install symlinks -y
+    sudo apt-get install clamav-freshclam -y
+	sudo apt-get install clamav-daemon -y
     clear
     # Use those rootkits, anti-malware, etc...
     echo -e "Starting CHKROOTKIT scan"
