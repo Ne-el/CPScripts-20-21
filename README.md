@@ -42,4 +42,4 @@ sudo ./linuxHardening.sh
 ## Windows
 This might be the easiest way to get your points in the fastest way possible.
 
-Just go to github.com/Ne-el/CPScripts-20-21 and click 
+Just go to github.com/Ne-el/CPScripts-20-21 and click ![DownloadCode] https://github.com/Ne-el/CPScripts-20-21/blob/master/Readme%20Reference/DOWNLOADCODE.png
