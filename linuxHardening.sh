@@ -6,9 +6,9 @@ LogTime=$(date '+%Y-%d %H:%M;%S')
 pwd=$(pwd)
 
 # Check for Admin Perms
-if [[ $EUID -ne 0 ]]
+if [[ "$EUID" -ne 0 ]]
 	then
-	echo "Please run again as root using 'sudo ./linuxmain.sh'"
+	echo "Please run again as root using 'sudo ./linuxHardening.sh'"
 	exit 1
 fi
 
@@ -18,7 +18,7 @@ pause() {
 }
 
 # Exits Script
-exit20 {
+exit20() {
 	exit 1
 	clear
 }
@@ -44,3 +44,8 @@ menu() {
 	echo "13) Remove prohibited programs				 14) Configure SSH"
 	echo "15) Edit sysctl.conf"
 }
+
+while true 
+do
+menu
+done
