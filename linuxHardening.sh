@@ -1,9 +1,9 @@
 #/bin/bash
 
 ## Declare variables
-UserName = $(whoami)
-LogTime = @(date '+%Y-%d %H:%M;%S')
-pwd = $(pwd)
+UserName=$(whoami)
+LogTime=$(date '+%Y-%d %H:%M;%S')
+pwd=$(pwd)
 
 # Check for Admin Perms
 if [[ $EUID -ne 0 ]]
