@@ -142,16 +142,6 @@ configureFirewall() {
         echo "$LogTime uss: [$UserName]# Firewall has been turned on and configured." >> output.log
 		ufw status
 		pause
-	;;
-	"RedHat"|"CentOS")
-		yum install ufw
-        echo "$LogTime uss: [$UserName]# Enabling firewall..." >> output.log
-                sudo ufw enable >>output.log
-                sudo ufw status >> output.log
-                sleep 1
-        echo "$LogTime uss: [$UserName]# Firewall has been turned on and configured." >> output.log
-                ufw status
-                pause
 }
 
 loginConf() {
@@ -836,8 +826,9 @@ read_options(){
 		21) cat postScript; pause;;
 		22) CAD;;
 		23)VirtualCon;;
-                24)misc;;
-		25) exit20;;
+        24)misc;;
+		25)freshclam;;
+		26) exit20;;
 		69)runFull;;
 		*) echo "Sorry that is not an option please select another one..."
 		;;
@@ -847,6 +838,6 @@ read_options(){
 while true
 do
 	clear
-	show_menu
+	menu
 	read_options
 done
